@@ -7,10 +7,14 @@
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:reference interface="com.user.UserApi" version="1.0.0" group="dubbo" id="userServiceImpl">
+    <dubbo:reference interface="com.user.UserApi" version="1.0.0" group="dubbo" id="userServiceImpl"
+                     loadbalance="first">
         <dubbo:method name="getUserOrderInfo" async="true"
                       onreturn="userPotalController.onreturn" onthrow="userPotalController.onthrow"></dubbo:method>
     </dubbo:reference>
-    <dubbo:reference interface="com.user.UserApi" version="1.0.0" group="dubbo" id="genericServiceImpl" generic="true"></dubbo:reference>
+    <dubbo:reference interface="com.user.UserApi" version="1.0.0" group="dubbo" id="genericServiceImpl" generic="true"
+                     loadbalance="last">
+
+    </dubbo:reference>
 
 </beans>
